@@ -12,3 +12,7 @@
 ### Version 0.0.3 : 0115
 
 - Benefit Section UI and Animation
+
+### Version 1.0.0 : 0122
+
+- PC Version Complete
