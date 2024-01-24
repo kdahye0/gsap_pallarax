@@ -15,24 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
     stagger: 0.06,
   });
 
-  // 글자 간격 줄어드는 효과
-  // let chars = document.querySelectorAll('.title .char');
-  // let marginStart = 30;
-  // let marginEnd = 10;
-
-  // gTl.from(chars, {
-  //   duration: 1,
-  //   opacity: 0,
-  //   ease: 'linear',
-  //   onUpdate: function () {
-  //    let progress = this.progress();
-  //    let currentMargin = marginStart + (marginEnd - marginStart) * progress;
-  //    chars.forEach((char) => {
-  //     char.style.margin = `0 ${currentMargin}px`;
-  //    });
-  //   },
-  // });
-
   // 메인 이미지 애니메이션
   gTl.to(
     ".header__img",
@@ -72,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   };
 
-  function headerAnimationWithScroll(){
+  function headerAnimationWithScroll(imgX){
     // 화면 스크롤 시 애니메이션 효과
     gsap.to(".title_paralax", {
       scrollTrigger: commonScrollTrigger.header,
@@ -86,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     gsap.to(".header__img", {
       scrollTrigger: commonScrollTrigger.header,
-      xPercent: -70, // y축으로 70%만큼 이동
+      xPercent: imgX, // y축으로 70%만큼 이동
     });
 
     gsap.to(".header__img img", {
@@ -130,10 +112,10 @@ document.addEventListener("DOMContentLoaded", function () {
   //   scrub: 1.9,
   // });
 
-  function aboutAnimationWithScroll() {
-    gsap.from('.about_img', {
+  function aboutAnimationWithScroll(imgY, txtY) {
+    gsap.from(".about_img", {
       scrollTrigger: commonScrollTrigger.about,
-      yPercent: 80,
+      yPercent: imgY,
     });
      gsap.from(".about_img img", {
        scrollTrigger: commonScrollTrigger.about,
@@ -141,13 +123,10 @@ document.addEventListener("DOMContentLoaded", function () {
      });
      gsap.to(".about_txt", {
        scrollTrigger: commonScrollTrigger.about,
-       yPercent: 50,
+       yPercent: txtY,
      });
   }
   
-  aboutAnimationWithScroll();
-}); // end of DOM Content Loaded Method
-
 // benefit section animation effet
 function benefits() {
   // gsap.from('.benefits_num', {
@@ -240,3 +219,12 @@ function footerAnimationWithScroll() {
 }
 
 footerAnimationWithScroll();
+
+if (window.innerWidth > 980) {
+  headerAnimationWithScroll(-70);
+  aboutAnimationWithScroll(80, 50);
+} else if (window.innerWidth <= 980) {
+  headerAnimationWithScroll(0);
+  aboutAnimationWithScroll(0, 30);
+  }
+}); // end of DOM Content Loaded Method

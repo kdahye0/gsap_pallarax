@@ -16,3 +16,7 @@
 ### Version 1.0.0 : 0122
 
 - PC Version Complete
+
+### Version 1.0.0 : 0124
+
+- 반응형 작업 중
